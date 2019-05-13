@@ -22,5 +22,8 @@ k8s集群，一个master，两个worker，修改自[justmeandopensource的代码
 主要是将一些安装该用aliyun的
 
 ## networking
-创建虚拟机来模拟一个网络，参考
+创建虚拟机来模拟一个网络,开了6个虚拟机pc123,router123,手动设置路由，参考
 https://www.brianlinkletter.com/how-to-use-virtualbox-to-emulate-a-network/
+
+## networking_dynamic_route
+上面networking的副本，只是使用zebra和ripd来自动配置router123的路由表
