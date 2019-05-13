@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
 
   # do NOT download the iso file from a webserver
   config.vbguest.no_remote = true
+  config.provision "shell", path: "bootstrap.sh"
   config.vm.provider "virtualbox" do |vb|
     vb.name = "centos1"
     vb.memory = 512
