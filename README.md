@@ -20,3 +20,7 @@ vagrant destroy
 ## kcluster
 k8s集群，一个master，两个worker，修改自[justmeandopensource的代码](https://github.com/justmeandopensource/kubernetes)
 主要是将一些安装该用aliyun的
+
+## networking
+创建虚拟机来模拟一个网络，参考
+https://www.brianlinkletter.com/how-to-use-virtualbox-to-emulate-a-network/
