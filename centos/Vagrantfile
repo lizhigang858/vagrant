@@ -7,6 +7,12 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "centos1.example.com"
   #网络，有好多种
   config.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", use_dhcp_assigned_default_route: true
+  # set auto_update to false, if you do NOT want to check the correct
+  # additions version when booting this machine
+  config.vbguest.auto_update = false
+
+  # do NOT download the iso file from a webserver
+  config.vbguest.no_remote = true
   config.vm.provider "virtualbox" do |vb|
     vb.name = "centos1"
     vb.memory = 512

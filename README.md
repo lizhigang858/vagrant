@@ -26,4 +26,5 @@ k8s集群，一个master，两个worker，修改自[justmeandopensource的代码
 https://www.brianlinkletter.com/how-to-use-virtualbox-to-emulate-a-network/
 
 ## networking_dynamic_route
-上面networking的副本，只是使用zebra和ripd来自动配置router123的路由表
+上面networking的副本，只是使用zebra和ripd来自动配置router123的路由表，参考鸟哥
+http://linux.vbird.org/linux_server/0230router.php#fig8.2-1

@@ -1,0 +1,85 @@
+ENV['VAGRANT_NO_PARALLEL'] = ''
+
+Vagrant.configure("2") do |config|
+  config.vm.define "pc1" do |pc1|
+    pc1.vm.box = "centos/7"
+    pc1.vm.hostname = "pc1.example.com"
+    pc1.vm.network "private_network", ip: "192.168.1.1", virtualbox__intnet: "inet-1"
+    pc1.vm.provision "shell", inline: "ip route add 192.168.0.0/16 via 192.168.1.254 dev eth1"
+    pc1.vm.provider "virtualbox" do |v|
+      v.name = "pc1"
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "pc2" do |pc2|
+    pc2.vm.box = "centos/7"
+    pc2.vm.hostname = "pc2.example.com"
+    pc2.vm.network "private_network", ip: "192.168.2.1", virtualbox__intnet: "inet-2"
+    pc2.vm.provision "shell", inline: "ip route add 192.168.0.0/16 via 192.168.2.254 dev eth1"
+    pc2.vm.provider "virtualbox" do |v|
+      v.name = "pc2"
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "pc3" do |pc3|
+    pc3.vm.box = "centos/7"
+    pc3.vm.hostname = "pc3.example.com"
+    pc3.vm.network "private_network", ip: "192.168.3.1", virtualbox__intnet: "inet-3"
+    pc3.vm.provision "shell", inline: "ip route add 192.168.0.0/16 via 192.168.3.254 dev eth1"
+    pc3.vm.provider "virtualbox" do |v|
+      v.name = "pc3"
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "router1" do |router1|
+    router1.vm.box = "centos/7"
+    router1.vm.hostname = "router1.example.com"
+    router1.vm.network "private_network", ip: "192.168.1.254", virtualbox__intnet: "inet-1"
+    router1.vm.network "private_network", ip: "192.168.100.1", virtualbox__intnet: "inet-100"
+    router1.vm.network "private_network", ip: "192.168.101.2", virtualbox__intnet: "inet-101"
+    router1.vm.provision "shell", path: "router1.sh"
+    router1.vm.provider "virtualbox" do |v|
+      v.name = "router1"
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "router2" do |router2|
+    router2.vm.box = "centos/7"
+    router2.vm.hostname = "router2.example.com"
+    router2.vm.network "private_network", ip: "192.168.2.254", virtualbox__intnet: "inet-2"
+    router2.vm.network "private_network", ip: "192.168.100.2", virtualbox__intnet: "inet-100"
+    router2.vm.network "private_network", ip: "192.168.102.2", virtualbox__intnet: "inet-102"
+    router2.vm.provision "shell", path: "router2.sh"
+    router2.vm.provider "virtualbox" do |v|
+      v.name = "router2"
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "router3" do |router3|
+    router3.vm.box = "centos/7"
+    router3.vm.hostname = "router3.example.com"
+    router3.vm.network "private_network", ip: "192.168.3.254", virtualbox__intnet: "inet-3"
+    router3.vm.network "private_network", ip: "192.168.101.1", virtualbox__intnet: "inet-101"
+    router3.vm.network "private_network", ip: "192.168.102.1", virtualbox__intnet: "inet-102"
+    router3.vm.provision "shell", path: "router3.sh"
+    router3.vm.provider "virtualbox" do |v|
+      v.name = "router3"
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
+  config.vm.provision "shell", path: "common.sh"
+
+
+end
