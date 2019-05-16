@@ -27,7 +27,7 @@ echo yum install -y -q nfs-utils
 echo "[TASK 5] /etc/exports可以参考鸟哥"
 cat >> /etc/exports<<EOF
 #所有IP都可以读写，并且没有root压缩
-/tmp  *(rw,no_root_squash)
+/tmp  *(fsid=0,rw,no_root_squash)
 #10.42.0.228可以读写，其它IP只可以读
 /home/vagrant 10.42.0.228(rw) *(ro)
 #我要讓 *.example.com 網域的主機，登入我的 NFS 主機時，可以存取 /home/linux ，但是他們存資料的時候，我希望他們的 UID 與 GID 都變成 45 這個身份的使用者，假設我 NFS 伺服器上的 UID 45 與 GID 45 的用戶/群組名稱為 nfsanon
