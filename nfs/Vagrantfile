@@ -5,6 +5,8 @@ Vagrant.configure("2") do |config|
     nfs.vm.box = "centos/7"
     nfs.vm.hostname = "nfs.example.com"
     nfs.vm.network "public_network"
+    config.vbguest.auto_update = false
+    config.vbguest.no_remote = true
     nfs.vm.provider "virtualbox" do |v|
       v.name = "nfs"
       v.memory = 512

@@ -40,3 +40,4 @@ systemctl enable rpcbind
 systemctl start rpcbind
 systemctl enable nfs
 systemctl start nfs
+
