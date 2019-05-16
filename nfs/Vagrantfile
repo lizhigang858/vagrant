@@ -2,14 +2,14 @@ ENV['VAGRANT_NO_PARALLEL'] = ''
 
 Vagrant.configure("2") do |config|
   config.vm.define "nfs" do |nfs|
-    pc1.vm.box = "centos/7"
-    pc1.vm.hostname = "nfs.example.com"
-    pc1.vm.network "public_network"
-    pc1.vm.provider "virtualbox" do |v|
+    nfs.vm.box = "centos/7"
+    nfs.vm.hostname = "nfs.example.com"
+    nfs.vm.network "public_network"
+    nfs.vm.provider "virtualbox" do |v|
       v.name = "nfs"
       v.memory = 512
       v.cpus = 1
     end
   end
-  config.vm.provision "shell", path: "common.sh"
+  config.vm.provision "shell", path: "bootstrap.sh"
 end
