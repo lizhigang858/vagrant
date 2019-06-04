@@ -28,3 +28,6 @@ https://www.brianlinkletter.com/how-to-use-virtualbox-to-emulate-a-network/
 ## networking_dynamic_route
 上面networking的副本，只是使用zebra和ripd来自动配置router123的路由表，参考鸟哥
 http://linux.vbird.org/linux_server/0230router.php#fig8.2-1
+
+## k8s_cluster_vm
+没有启动脚本，几个裸机，用来运行一键安装脚本
