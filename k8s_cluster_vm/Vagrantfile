@@ -5,12 +5,12 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
 Vagrant.configure(2) do |config|
   # Kubernetes Master Server
-  config.vm.define "kmaster" do |kmaster|
+  config.vm.define "k8smaster" do |kmaster|
     kmaster.vm.box = "centos/7"
-    kmaster.vm.hostname = "kmaster.example.com"
+    kmaster.vm.hostname = "k8smaster.example.com"
     kmaster.vm.network "public_network", ip: "192.168.50.150"
     kmaster.vm.provider "virtualbox" do |v|
-      v.name = "kmaster"
+      v.name = "k8smaster"
       v.memory = 1024
       v.cpus = 1
       # v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -22,12 +22,12 @@ Vagrant.configure(2) do |config|
 
   # Kubernetes Worker Nodes
   (1..NodeCount).each do |i|
-    config.vm.define "kworker#{i}" do |workernode|
+    config.vm.define "k8sworker#{i}" do |workernode|
       workernode.vm.box = "centos/7"
-      workernode.vm.hostname = "kworker#{i}.example.com"
+      workernode.vm.hostname = "k8sworker#{i}.example.com"
       workernode.vm.network "public_network", ip: "192.168.50.15#{i}"
       workernode.vm.provider "virtualbox" do |v|
-        v.name = "kworker#{i}"
+        v.name = "k8sworker#{i}"
         v.memory = 1024
         v.cpus = 1
         # v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
