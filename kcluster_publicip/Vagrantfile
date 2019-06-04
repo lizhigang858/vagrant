@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
     kmaster.vm.provider "virtualbox" do |v|
       v.name = "kmaster"
       v.memory = 4096
-      v.cpus = 2
+      v.cpus = 4
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
     kmaster.vm.provision "shell", path: "bootstrap_kmaster.sh"
@@ -31,8 +31,8 @@ Vagrant.configure(2) do |config|
       workernode.vm.network "public_network", ip: "192.168.50.10#{i}"
       workernode.vm.provider "virtualbox" do |v|
         v.name = "kworker#{i}"
-        v.memory = 2048
-        v.cpus = 2
+        v.memory = 10240
+        v.cpus = 4
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       end
       workernode.vm.provision "shell", path: "bootstrap_kworker.sh"

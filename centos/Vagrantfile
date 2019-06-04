@@ -6,13 +6,11 @@ Vagrant.configure("2") do |config|
   #系统的hostname
   config.vm.hostname = "centos1.example.com"
   #网络，有好多种
-  config.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", use_dhcp_assigned_default_route: true
+  config.vm.network "public_network"
   # set auto_update to false, if you do NOT want to check the correct
   # additions version when booting this machine
-  config.vbguest.auto_update = false
 
   # do NOT download the iso file from a webserver
-  config.vbguest.no_remote = true
   config.vm.provision "shell", path: "bootstrap.sh"
   config.vm.provider "virtualbox" do |vb|
     vb.name = "centos1"
