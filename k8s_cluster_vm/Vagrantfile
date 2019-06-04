@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
         v.cpus = 1
         # v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       end
-      workernode.vm.provision "shell", path: "bootstrap_kworker.sh"
+      # workernode.vm.provision "shell", path: "bootstrap_kworker.sh"
     end
   end
 
