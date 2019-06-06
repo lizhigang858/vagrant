@@ -2,8 +2,8 @@
 
 echo "[TASK 0] Pull required images for k8s from aliyun and tag to official name"
 images=(
-'registry.cn-hangzhou.aliyuncs.com/k8s-wls/kube-proxy:v1.14.1'
-'registry.cn-hangzhou.aliyuncs.com/k8s-wls/pause:3.1'
+'gcr.akscn.io/google_containers/kube-proxy:v1.14.2'
+'gcr.akscn.io/google_containers/pause:1.14.2'
 )
 
 official_prefix=k8s.gcr.io/
